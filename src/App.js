@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
+import ReactPlayer from "react-player";
 
 function Game() {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -60,12 +61,32 @@ function Game() {
     setIsX(true);
     setSquares(Array(9).fill(null));
   };
+
   return isPlaying ? (
     <div className="startPlaying">
       <button onClick={() => setIsPlaying(false)}>Start Playing! 🎮 </button>
     </div>
   ) : (
     <div className="App">
+      <div className="player">
+        <ReactPlayer
+          url="https://www.youtube.com/watch?v=x2NzoLMWAwQ&t=23s&ab_channel=GamingSoundFX"
+          volume={1}
+          playing={true}
+          controls={false}
+          config={{
+            youtube: {
+              playerVars: {
+                modestbranding: true,
+                color: "black",
+                controlsList: "nofullscreen",
+                fs: 0,
+              },
+            },
+          }}
+        />
+      </div>
+
       <div className="header">
         <h1>{status}</h1>
       </div>
